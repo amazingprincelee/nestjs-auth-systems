@@ -1,0 +1,2 @@
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AbWFpbC5jb20iLCJzdWIiOjIsImlhdCI6MTcyNDU3MzI0MSwiZXhwIjoxNzI0NTc2ODQxfQ.Hh8xb4ANsLn-g1TT7fdLbcddwpCMlWFGM98KdJM_BFY

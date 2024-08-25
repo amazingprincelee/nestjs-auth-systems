@@ -1,0 +1,43 @@
+# Facebook Authentication
+
+# Initiate Facebook Login
+GET /auth/facebook HTTP/1.1
+Host: localhost:3000
+
+# Callback URL (After Facebook Login)
+GET /auth/facebook/user HTTP/1.1
+Host: localhost:3000
+Authorization: Bearer <your_facebook_access_token>
+
+# Twitter Authentication
+
+# Initiate Twitter Login
+GET /auth/twitter HTTP/1.1
+Host: localhost:3000
+
+# Callback URL (After Twitter Login)
+GET /auth/twitter/user HTTP/1.1
+Host: localhost:3000
+Authorization: Bearer <your_twitter_access_token>
+
+# LinkedIn Authentication
+
+# Initiate LinkedIn Login
+GET /auth/linkedin HTTP/1.1
+Host: localhost:3000
+
+# Callback URL (After LinkedIn Login)
+GET /auth/linkedin/user HTTP/1.1
+Host: localhost:3000
+Authorization: Bearer <your_linkedin_access_token>
+
+# Google Authentication
+
+# Initiate Google Login
+GET /auth/google HTTP/1.1
+Host: localhost:3000
+
+# Callback URL (After Google Login)
+GET /auth/google/user HTTP/1.1
+Host: localhost:3000
+Authorization: Bearer <your_google_access_token>
