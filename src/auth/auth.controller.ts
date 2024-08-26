@@ -1,12 +1,13 @@
-// src/auth/auth.controller.ts
-import { Controller, Post, Body, Res, Query, UnauthorizedException } from '@nestjs/common';
+import { Controller, Post, Body, Query } from '@nestjs/common';
 import { AuthService } from './provider/auth.service';
 import { TwoFAService } from 'src/twofa/providers/twofa.service';
 import { CreateUserDto } from 'src/user/dtos/create.user.dto';
 import { LoginDto } from 'src/user/dtos/login.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 
 @Controller('auth')
+@ApiTags('Users authentication system.')
 export class AuthController {
   constructor(
     private readonly authService: AuthService,

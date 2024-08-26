@@ -10,14 +10,12 @@ import { UserModule } from './user/user.module';
 import { SocialAuthModule } from './social-auth/social-auth.module';
 import { ChatGateway } from './chat/chat.gateway';
 import { EmailModule } from './email/email.module';
-import { FacebookAuthStrategy } from './social-auth/providers/facebook.strategy';
 import { GoogleAuthStrategy } from './social-auth/providers/google.strategy';
-import { LinkedInAuthStrategy } from './social-auth/providers/linkedin.strategy';
-import { TwitterAuthStrategy } from './social-auth/providers/twitter.strategy';
 import { AuthModule } from './auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { ProfileModule } from './profile/profile.module';
 import { PassportModule } from '@nestjs/passport';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -51,15 +49,13 @@ import { PassportModule } from '@nestjs/passport';
     ConfigModule.forRoot({
       isGlobal: true, // Makes the configuration available globally
     }),
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
     ChatGateway,
-    FacebookAuthStrategy,
     GoogleAuthStrategy,
-    LinkedInAuthStrategy,
-    TwitterAuthStrategy,
     AuthModule,
   ],
 })

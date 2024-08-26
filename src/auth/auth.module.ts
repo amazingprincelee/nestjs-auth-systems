@@ -11,7 +11,7 @@ import { EmailModule } from 'src/email/email.module';
 
 @Module({
   imports: [
-    ConfigModule, // Import ConfigModule
+    ConfigModule, 
     UserModule,
     TwofaModule,
     EmailModule,

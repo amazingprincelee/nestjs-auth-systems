@@ -13,7 +13,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     if (typeof canActivate === 'boolean') {
       return canActivate;
     }
-    return false; // Or handle as appropriate
+    return false; 
   }
 
   handleRequest(err, user, info) {

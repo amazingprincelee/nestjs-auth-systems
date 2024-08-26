@@ -1,2 +1,3 @@
 GET http://localhost:3000/profile
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYWlzZTNAbWFpbC5jb20iLCJzdWIiOjEwLCJpYXQiOjE3MjQ2NDYwNTMsImV4cCI6MTcyNDY0OTY1M30.F8NON38xecwSjsn8UKQAFWpB4XO1HM0YG5nRt64L2PQ
+# please replace or add dynamic bearer token

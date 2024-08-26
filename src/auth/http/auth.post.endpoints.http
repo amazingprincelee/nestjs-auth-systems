@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "email": "praise1@mail.com",
+    "email": "pdfraise9@mail.com",
     "password": "password"
 }
 
@@ -12,11 +12,12 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "praise3@mail.com",
+    "email": "pdfraise9@mail.com",
     "password": "password"
 }
 
 
 ### Verify-email
-POST http://localhost:3000/auth/verify-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYWlzZTFAbWFpbC5jb20iLCJpYXQiOjE3MjQ2NDc2OTQsImV4cCI6MTcyNDY1MTI5NH0.3D-arNfmzU1CFwBkg9TsF7P9BC89c-HHkzrgjRCzS_I
+POST http://localhost:3000/auth/verify-email
+# ?token= please add generated token as query
 

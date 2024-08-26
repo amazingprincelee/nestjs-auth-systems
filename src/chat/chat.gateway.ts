@@ -1,7 +1,11 @@
-import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import {
+  SubscribeMessage,
+  WebSocketGateway,
+  WebSocketServer,
+} from '@nestjs/websockets';
 import { Server } from 'socket.io';
 
-@WebSocketGateway({ cors: true })
+@WebSocketGateway()
 export class ChatGateway {
   @WebSocketServer()
   server: Server;

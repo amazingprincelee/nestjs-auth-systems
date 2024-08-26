@@ -41,6 +41,8 @@ export class AuthService {
     );
   }
 
+  
+ // Register the new users
   async register(CreateUserDto: CreateUserDto): Promise<User> {
     const { email, password, isTwoFactorEnabled } = CreateUserDto;
 
@@ -92,7 +94,7 @@ export class AuthService {
       }
     }
   }
-
+//Verify the email
   async verifyEmail(token: string) {
     try {
       console.log('Received token:', token); // Log token for debugging
@@ -116,6 +118,7 @@ export class AuthService {
     }
   }
 
+  //login and create token
   async login(loginDto: LoginDto): Promise<{ accessToken: string }> {
     const { email, password } = loginDto;
 

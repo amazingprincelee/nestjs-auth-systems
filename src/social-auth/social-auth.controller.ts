@@ -1,57 +1,26 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('auth')
+@ApiTags('Social Auth System Module')
 export class SocialAuthController {
-  [x: string]: any;
-  @Get('facebook')
-  @UseGuards(AuthGuard('facebook'))
-  async facebookLogin(@Req() req) {
-    // Initiates the Facebook login
-  }
-
-  @Get('facebook/user')
-  @UseGuards(AuthGuard('facebook'))
-  async facebookCallback(@Req() req) {
-    return req.user;
-  }
-
-  @Get('twitter')
-  @UseGuards(AuthGuard('twitter'))
-  async twitterLogin(@Req() req) {
-    // Initiates the Twitter login
-  }
-
-  @Get('twitter/user')
-  @UseGuards(AuthGuard('twitter'))
-  async twitterCallback(@Req() req) {
-    return req.user;
-  }
-
-  @Get('linkedin')
-  @UseGuards(AuthGuard('linkedin'))
-  async linkedinLogin(@Req() req) {
-    // Initiates the LinkedIn login
-  }
-
-  @Get('linkedin/user')
-  @UseGuards(AuthGuard('linkedin'))
-  async linkedinCallback(@Req() req) {
-    return req.user;
-  }
-
   @Get('google')
   @UseGuards(AuthGuard('google'))
+  @ApiOperation({ summary: 'Initiates Google login' })
+  @ApiResponse({ status: 302, description: 'Redirects to Google for authentication' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
   async googleLogin(@Req() req) {
-    // Initiates the Google login
+    // google Oauth 
   }
 
   @Get('google/user')
-@UseGuards(AuthGuard('google'))
-async googleAuthCallback() {
-  // Handle the OAuth login here
-  return {message: 'Successfully Authenticated'}
-}
-
-  
+  @UseGuards(AuthGuard('google'))
+  @ApiOperation({ summary: 'Handles Google OAuth callback' })
+  @ApiResponse({ status: 200, description: 'Successfully authenticated', type: Object })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  async googleAuthCallback(@Req() req) {
+    // Handle the OAuth login 
+    return { message: 'Successfully Authenticated' };
+  }
 }

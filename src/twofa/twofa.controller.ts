@@ -2,8 +2,10 @@
 import { Controller, Post, Body, Patch, NotFoundException, BadRequestException } from '@nestjs/common';
 import { TwoFAService } from './providers/twofa.service';
 import { SendEmailDto } from './dto/send-email.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('twofa')
+@ApiTags("Email based Two-factor authentication system")
 export class TwoFAController {
   constructor(
     private readonly twoFAService: TwoFAService,
