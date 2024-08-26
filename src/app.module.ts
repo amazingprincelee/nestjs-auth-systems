@@ -41,9 +41,9 @@ import { ChatModule } from './chat/chat.module';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [User, TwoFa], // Explicitly add entities here
+        entities: [User, TwoFa], 
         autoLoadEntities: true, // Keep this for future entities
-        synchronize: true,
+        synchronize: true, //is not recommended for production environments, please use for development
       }),
     }),
     ConfigModule.forRoot({
