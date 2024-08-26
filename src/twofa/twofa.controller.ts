@@ -1,16 +1,26 @@
 // src/twofa/twofa.controller.ts
-import { Controller, Post, Body } from '@nestjs/common';
-import { SendEmailDto } from './dto/send-email.dto';
+import { Controller, Post, Body, Patch, NotFoundException, BadRequestException } from '@nestjs/common';
 import { TwoFAService } from './providers/twofa.service';
+import { SendEmailDto } from './dto/send-email.dto';
 
 @Controller('twofa')
 export class TwoFAController {
-  constructor(private readonly twoFAService: TwoFAService) {}
+  constructor(
+    private readonly twoFAService: TwoFAService,
+  ) {}
 
-  @Post('verify')
-  async verify(@Body() sendEmailDto: SendEmailDto) {
-    const { email, token } = sendEmailDto;
-    const isValid = await this.twoFAService.verifyToken(email, token);
-    return { isValid };
+  @Post('send')
+  async sendToken(@Body('email') email: string) {
+    return await this.twoFAService.sendToken(email);
+  }
+
+  @Post('enable')
+  async enableTwoFA(@Body() sendEmailDto: SendEmailDto) {
+      return await this.twoFAService.enable(sendEmailDto);
+  }
+
+  @Patch('disable')
+  async disable2FA(@Body('email') email: string) {
+      return await this.twoFAService.disable(email);
   }
 }

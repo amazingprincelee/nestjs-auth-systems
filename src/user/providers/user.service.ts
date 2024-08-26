@@ -54,5 +54,10 @@ export class UserService {
     }
     return user;
   }
+
+  // Method to find a user by their email address
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    return this.userRepository.findOne({ where: { email } });
+  }
 }
 

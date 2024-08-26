@@ -6,6 +6,7 @@ import { AuthService } from './provider/auth.service';
 import { TwofaModule } from 'src/twofa/twofa.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './provider/jwt-strategy';
+import { SocialAuthService } from 'src/social-auth/social-auth.service';
 
 @Module({
   imports: [
@@ -22,6 +23,6 @@ import { JwtStrategy } from './provider/jwt-strategy';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, SocialAuthService],
 })
 export class AuthModule {}

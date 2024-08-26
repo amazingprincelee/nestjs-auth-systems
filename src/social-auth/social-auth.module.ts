@@ -22,6 +22,7 @@ import { User } from 'src/user/user.entity';
     GoogleAuthStrategy,
 
   ],
-  controllers: [SocialAuthController]
+  controllers: [SocialAuthController],
+  exports: [SocialAuthService],
 })
 export class SocialAuthModule {}

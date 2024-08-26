@@ -1,0 +1,18 @@
+
+### Send 2FA Token
+POST http://localhost:3000/twofa/send
+Content-Type: application/json
+
+{
+  "email": "princeleepraise@gmail.com"
+}
+
+
+### Enable 2FA
+POST http://localhost:3000/twofa/enable
+Content-Type: application/json
+
+{
+  "email": "princeleepraise@gmail.com",
+  "token": "676164"
+}

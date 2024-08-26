@@ -2,10 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy as TwitterStrategy } from 'passport-twitter';
 import { ConfigService } from '@nestjs/config';
+import { SocialAuthService } from '../social-auth.service';
+
 
 @Injectable()
 export class TwitterAuthStrategy extends PassportStrategy(TwitterStrategy, 'twitter') {
-  constructor(private configService: ConfigService) {
+  constructor(
+    private configService: ConfigService,
+    private socialAuthService: SocialAuthService, // Inject SocialAuthService
+  ) {
     super({
       consumerKey: configService.get<string>('TWITTER_CONSUMER_KEY'),
       consumerSecret: configService.get<string>('TWITTER_CONSUMER_SECRET'),
@@ -14,7 +19,11 @@ export class TwitterAuthStrategy extends PassportStrategy(TwitterStrategy, 'twit
   }
 
   async validate(token: string, tokenSecret: string, profile: any, done: Function) {
-    // Handle the Twitter profile and return the user
-    done(null, profile);
+    const thirdPartyId = profile.id;
+    const provider = 'twitter';
+
+    // Delegate to the SocialAuthService to handle user logic
+    const user = await this.socialAuthService.validateOAuthLogin(thirdPartyId, provider, profile);
+    done(null, user);
   }
 }

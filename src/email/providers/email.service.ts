@@ -1,11 +1,13 @@
 // src/email/email.service.ts
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
 import { ConfigService } from '@nestjs/config';
+import { debug } from 'console';
 
 @Injectable()
 export class EmailService {
   private transporter: nodemailer.Transporter;
+ 
 
   constructor(private configService: ConfigService) {
     // Configure the transporter with environment variables
@@ -17,6 +19,8 @@ export class EmailService {
         user: this.configService.get<string>('EMAIL_USERNAME'),
         pass: this.configService.get<string>('EMAIL_PASSWORD'),
       },
+      debug: true,
+      logger: true
     });
   }
 

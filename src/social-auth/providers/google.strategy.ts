@@ -21,11 +21,10 @@ export class GoogleAuthStrategy extends PassportStrategy(GoogleStrategy, 'google
 
   async validate(accessToken: string, refreshToken: string, profile: any, done: Function) {
     // Extract the necessary fields from the profile
-    const thirdPartyId = profile.id; // Google's unique user ID
-    const provider = 'google'; // The OAuth provider
-  
-    // You can add more logic here if necessary
-    done(null, { thirdPartyId, provider, profile });
+    const thirdPartyId = profile.id;
+    const provider = 'google';
+    const user = await this.userService.findOrCreate(thirdPartyId, provider, profile);
+    done(null, user);
   }
   
 }

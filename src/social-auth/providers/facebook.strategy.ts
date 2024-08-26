@@ -2,10 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy as FacebookStrategy } from 'passport-facebook';
 import { ConfigService } from '@nestjs/config';
+import { SocialAuthService } from '../social-auth.service';
+
 
 @Injectable()
 export class FacebookAuthStrategy extends PassportStrategy(FacebookStrategy, 'facebook') {
-  constructor(private configService: ConfigService) {
+  constructor(
+    private configService: ConfigService,
+    private socialAuthService: SocialAuthService, // Inject SocialAuthService
+  ) {
     super({
       clientID: configService.get<string>('FACEBOOK_CLIENT_ID'),
       clientSecret: configService.get<string>('FACEBOOK_CLIENT_SECRET'),
@@ -15,7 +20,11 @@ export class FacebookAuthStrategy extends PassportStrategy(FacebookStrategy, 'fa
   }
 
   async validate(accessToken: string, refreshToken: string, profile: any, done: Function) {
-    // Handle the Facebook profile and return the user
-    done(null, profile);
+    const thirdPartyId = profile.id;
+    const provider = 'facebook';
+
+    // Delegate to the SocialAuthService to handle user logic
+    const user = await this.socialAuthService.validateOAuthLogin(thirdPartyId, provider, profile);
+    done(null, user);
   }
 }

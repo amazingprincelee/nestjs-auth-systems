@@ -1,0 +1,6 @@
+PATCH http://localhost:3000/twofa/disable
+Content-Type: application/json
+
+{
+  "email": "princeleepraise@gmail.com"
+}
