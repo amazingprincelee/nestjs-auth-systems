@@ -23,5 +23,6 @@ export class User {
   @Column({ nullable: true })
   provider: string;
 
-  // Add any other fields needed
+  @Column({ default: false })
+  isEmailVerified: boolean; 
 }

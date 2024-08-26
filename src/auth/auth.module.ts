@@ -7,12 +7,14 @@ import { TwofaModule } from 'src/twofa/twofa.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './provider/jwt-strategy';
 import { SocialAuthService } from 'src/social-auth/social-auth.service';
+import { EmailModule } from 'src/email/email.module';
 
 @Module({
   imports: [
     ConfigModule, // Import ConfigModule
     UserModule,
     TwofaModule,
+    EmailModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

@@ -11,20 +11,6 @@ export class UserService {
     ){}
 
 
-    public seyHello(){
-        return 'Hello World';
-    }
-
-    public async createUser(userDetails: object){
-
-        let newUser = this.userRepository.create(userDetails)
-
-        await this.userRepository.save(newUser)
-
-        return newUser;
-        
-    };
-
     // Method to find a user by their third-party ID and provider
   public async findOneByThirdPartyId(thirdPartyId: string, provider: string): Promise<User | undefined> {
     return this.userRepository.findOne({ where: { thirdPartyId, provider } });

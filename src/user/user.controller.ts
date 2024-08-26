@@ -8,15 +8,4 @@ export class UserController {
     ){}
 
 
-    @Get()
-    sayHello(){
-        return this.userService.seyHello()
-    }
-
-    @Post()
-    creatuser(@Body() userDetails: object){
-
-        return this.userService.createUser(userDetails)
-
-    }
 }
